@@ -2,7 +2,7 @@ node {
    def mvnHome
    stage('Preparation') {
 
-
+     git 'https://github.com/ssvarma138/jenkinsintegration.git'
       mvnHome = tool 'maven_3_6_3'
    }
    stage('compile') {
