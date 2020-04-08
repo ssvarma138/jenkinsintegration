@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/somasekhar.c/Documents/Avengers/SampleProject">
+        <classes>
+            <class name="org.example.helloworld.AppTest">
+                <methods>
+                    <include name="shouldAnswerWithTrue"/>
+                </methods>
+            </class>
+            <class name="org.example.helloworld.entity.ComputationTest">
+                <methods>
+                    <include name="cAddTest"/>
+                    <include name="cSubtarctTest"/>
+                    <include name="cMultiplyTest"/>
+                    <include name="cDivisionTest"/>
+                </methods>
+            </class>
+            <class name="org.example.helloworld.resources.MyResourceTest">
+                <methods>
+                    <include name="addTest"/>
+                    <include name="subtractTest"/>
+                    <include name="multiplyTest"/>
+                    <include name="divisionTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
