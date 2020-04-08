@@ -1,6 +1,7 @@
 package org.example.helloworld.resources;
 
-  // import org.junit.Test;
+   import org.junit.FixMethodOrder;
+   import org.junit.Test;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -21,14 +22,16 @@ import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import org.example.helloworld.MyApplication;
 import org.example.helloworld.MyConfiguration;
 import org.junit.ClassRule;
-import org.testng.annotations.Test;
-import org.testng.Assert;
+   import org.junit.runners.MethodSorters;
+
+import org.junit.Assert;
 
 import java.net.URI;
 import java.util.Map;
 
 
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class MyResourceTest {
 
@@ -36,28 +39,30 @@ public class MyResourceTest {
 
      Response response1 ;
     String expected ,result;
-    @Test(priority = 1)
+    @Test
    public void addTest(){
      response1 = myResource.sayHelloUsingGet(12,14,"add");
      result = (String) response1.getEntity();
 
         Assert.assertEquals("26", result);
+
+
     }
-    @Test(priority = 2)
+    @Test
     public void subtractTest(){
      response1 = myResource.sayHelloUsingGet(12,14,"subtract");
         result = (String) response1.getEntity();
 
      Assert.assertEquals("-2", response1.getEntity());
     }
-    @Test(priority = 3)
+    @Test
     public void multiplyTest(){
      response1 = myResource.sayHelloUsingGet(12,14,"multiply");
         result = (String) response1.getEntity();
 
      Assert.assertEquals("168", response1.getEntity());
     }
-    @Test(priority = 4)
+    @Test
     public void divisionTest(){
      response1 = myResource.sayHelloUsingGet(12,14,"division");
         result = (String) response1.getEntity();
@@ -65,8 +70,8 @@ public class MyResourceTest {
      Assert.assertEquals("0", response1.getEntity() );
     }
 
-   @Test(priority = 5)
-   public void myApiTest(){
+   @Test
+   public void zmyApiTest(){
        Client client = ClientBuilder.newClient();
       /*  client.target(
                "http://localhost:8082").path("my-api").queryParam("a",14).queryParam("b",12).queryParam("operator","add")
@@ -84,10 +89,10 @@ public class MyResourceTest {
                             .accept(MediaType.APPLICATION_JSON)
                             .get();
       String actual = response.readEntity(String.class);
-      expected = "12 14 add 26 12 14 subtract -2 12 14 multiply 168 12 14 division 0" ;
+      expected = "12 14 add 26 12 14 division 0 12 14 multiply 168 12 14 subtract -2" ;
        Assert.assertEquals(response.getStatus(),200);
 
-       Assert.assertEquals(actual,expected);
+       Assert.assertEquals(expected,actual);
    }
 
 
